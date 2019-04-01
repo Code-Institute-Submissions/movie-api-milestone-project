@@ -1,0 +1,38 @@
+.top-bar {
+    background-color: $gold;
+    height: 60px;
+}
+
+.main-logo {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 7px;
+}
+
+.page-header {
+    @include page-header-font;
+    position: relative;
+    top: 10px;
+}
+
+.search-bar {
+    float: right;
+    position: relative;
+    top: 15px;
+}
+
+.search-bar input {
+    background-color: $gold;
+    width: 100px;
+    color: $content-font-color;
+    font-family: $content-font;
+    border-radius: 10px;
+    border: 2px solid $gun-metal;
+}
+
+.search-btn {
+    background-color: $gold;
+    border-radius: 25px;
+    border: 2px solid $gun-metal;
+}
