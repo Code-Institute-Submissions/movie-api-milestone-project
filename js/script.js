@@ -19,7 +19,7 @@ function movie_search() {
         var movie = $( "input" ).val();
           
       $.ajax({
-            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&type=movie&s=" + movie,
+            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&plot=full&s=" + movie,
             type: "GET",
             dataType: "json",
             headers: {"X-RapidAPI-Key": "b073a0eb4bmsh4dae4c8f1976d43p164f83jsnaf292aa5778b"},
@@ -34,7 +34,19 @@ function movie_search() {
     }
   };
   /*
-  success: function printResults(Search){
+  function movie_search() {
+        var movie = $( "input" ).val();
+          
+      $.ajax({
+            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&plot=full&s=" + movie,
+            type: "GET",
+            dataType: "json",
+            headers: {"X-RapidAPI-Key": "b073a0eb4bmsh4dae4c8f1976d43p164f83jsnaf292aa5778b"},
+            success: function(Search){
                 for (var i=0; i < Search.length; i++) {
-                    console.log(Search[i]['imdbID']);
+                    console.log(Search[i]['imdbID'])}
+                
+    }
+  });
+}
 */
