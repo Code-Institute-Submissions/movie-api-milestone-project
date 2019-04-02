@@ -13,11 +13,7 @@ function movie_search() {
     });
   }
   */
-xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
-    }
-  };
+
   /* -------code for the imdb api--------------*/
 function movie_search() {
         var movie = $( "input" ).val();
@@ -32,6 +28,13 @@ function movie_search() {
             }
     });
   }
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+  };
+  /*
   success: function printResults(Search){
                 for (var i=0; i < Search.length; i++) {
                     console.log(Search[i]['imdbID']);
+*/
