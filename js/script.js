@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-/*-------code for the new api--------*/
+/*-------code for the omdb api--------*/
 function movie_search() {
         var movie = $( "input" ).val();
           
@@ -18,7 +18,7 @@ xhr.onreadystatechange = function() {
       console.log(this.responseText);
     }
   };
-  /* -------code for the old api--------------
+  /* -------code for the imdb api--------------
 function movie_search() {
         var movie = $( "input" ).val();
           
