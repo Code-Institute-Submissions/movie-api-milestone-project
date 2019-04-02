@@ -1,5 +1,14 @@
 .main-bg {
-    height: 500px;
+    height: 100%;
     width: 100%;
     background-color: $main-bg;
+}
+
+.body-header-container{
+    height: 140px;
+}
+.body-header {
+    @include header-font;
+    text-align: center;
+    padding-top: 80px;
 }

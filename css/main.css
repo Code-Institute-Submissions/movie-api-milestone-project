@@ -35,8 +35,19 @@
   border: 2px solid #2C3539; }
 
 .main-bg {
-  height: 500px;
+  height: 100%;
   width: 100%;
   background-color: black; }
+
+.body-header-container {
+  height: 140px; }
+
+.body-header {
+  font-family: "Dosis", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffbf00;
+  text-align: center;
+  padding-top: 80px; }
 
 /*# sourceMappingURL=main.css.map */
