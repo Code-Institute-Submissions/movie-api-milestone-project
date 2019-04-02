@@ -10,9 +10,10 @@ function movie_search() {
             headers: {"X-RapidAPI-Key": "b073a0eb4bmsh4dae4c8f1976d43p164f83jsnaf292aa5778b"},
             success (response, status, xhr) {
                 console.log(response);
+            }
     }
     
-  });
+  );
   
   }
   
@@ -21,6 +22,14 @@ xhr.onreadystatechange = function() {
       console.log(this.responseText);
     }
   };
+  /*
+function writeToDocument (){
+    movie_search(function(){
+        document.getElementById("title").innerHTML = Search.Title;
+    });
+        
+    }
+*/
 /*
 function movie_search() {
         var movie = $( "input" ).val();
