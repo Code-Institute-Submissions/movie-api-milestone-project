@@ -14,12 +14,12 @@ function movie_search() {
   }
   */
 
-  /* -------code for the imdb api--------------*/
+  /* -------code for the imdb api--------------
 function movie_search() {
         var movie = $( "input" ).val();
           
       $.ajax({
-            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&plot=full&s=" + movie,
+            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&s=" + movie + "&plot=full",
             type: "GET",
             dataType: "json",
             headers: {"X-RapidAPI-Key": "b073a0eb4bmsh4dae4c8f1976d43p164f83jsnaf292aa5778b"},
@@ -32,21 +32,21 @@ function movie_search() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
     }
-  };
-  /*
+  };*/
+  
   function movie_search() {
         var movie = $( "input" ).val();
           
       $.ajax({
-            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&plot=full&s=" + movie,
+            url: "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&type=movie&plot=full&=" + movie,
             type: "GET",
             dataType: "json",
             headers: {"X-RapidAPI-Key": "b073a0eb4bmsh4dae4c8f1976d43p164f83jsnaf292aa5778b"},
-            success: function(Search){
-                for (var i=0; i < Search.length; i++) {
-                    console.log(Search[i]['imdbID'])}
-                
-    }
-  });
+            success: function(){
+                for ( i=0; i < Search.length; i++) {
+                   console.log(Search[i]['imdbID'])
+    
+  }
 }
-*/
+});
+}
