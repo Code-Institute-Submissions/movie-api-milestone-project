@@ -1,19 +1,20 @@
 var xhr = new XMLHttpRequest();
 /*-------code for the omdb api--------
 function movie_search() {
-        var movie = $( "input" ).val();
-          
+        var movie = $( "input" ).val();*/
+ /*         
       $.ajax({
             url: "https://www.omdbapi.com/?t=" + movie +"&plot=full?i=tt3896198&apikey=858bd7c5",
             type: "GET",
             dataType: "json",
-            success (response, status, xhr) {
-                console.log(response);
-            }
-    });
-  }
+            success: function(){
+            for ( i=0; i < arr.length; i++) {
+                   console.log(arr[i]['imdbID'])
+                }
+    }
+  });
+}
   */
-
   /* -------code for the imdb api--------------
 function movie_search() {
         var movie = $( "input" ).val();
@@ -27,13 +28,24 @@ function movie_search() {
                 console.log(response);
             }
     });
-  }
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
-    }
-  };*/
+  }*/
   
+  function movie_search() {
+        var movie = $( "input" ).val();
+        
+  xhr.open("GET", "https://www.omdbapi.com/?t=" + movie +"&plot=full?i=tt3896198&apikey=858bd7c5");
+  xhr.send();
+ 
+ xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      movie = (JSON.parse(this.responseText));
+        document.getElementById("title").textContent = movie.Title;
+    }
+  };
+  }
+  
+
+  /*
   function movie_search() {
         var movie = $( "input" ).val();
           
@@ -49,4 +61,4 @@ function movie_search() {
   }
 }
 });
-}
+}*/
