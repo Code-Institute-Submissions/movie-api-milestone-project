@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700,800|Open+Sans:400,400i,600" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
 </head>
 <body>
     <header>
@@ -34,25 +35,58 @@
             
         </div>
         <div class="container-fluid main-bg">
-            <div class="row result-container">
-                <div class="col-sm-12 col-md-3">
-                    <div>
-                        <img class="poster" id="poster" src="">
+            <div id="result-container" class="row result-container">
+                
+                    <div class="col-sm-12 col-md-3">
+                        <div>
+                            <img class="poster" id="poster">
+                        </div>
                     </div>
+                    <div class="col-sm-12 col-md-9">
+                            <span class="title" id="title"></span>
+                            <span class="release" id="release"></span>
+                            <div  class="director" id="director"></div>
+                            <br>
+                            <div class="plot" id="plot"></div>
+                            <br>
+                            <div class="director" id="cast"></div>
+                            <div class="meta" id="metascore"></div>
+                            
+                    </div>
+                    
+            </div>
+        </div>
+        <div class="container-fluid divider">
+            <div class="row"></div>
+        </div>
+        <div class="container-fluid main-bg">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="body-header">Search For A Cinema Near You</p>
                 </div>
-                <div class="col-sm-12 col-md-9">
-                        <span class="title" id="title"></span>
-                        <span class="release" id="release"></span>
-                        <div  class="director" id="director"></div>
-                        <br>
-                        <div class="plot" id="plot"></div>
-                        
+            </div>
+            <div class="row">
+                <div class="col-sm-12 search-bar-container">
+                    <span><input class="map-search-bar" id="search-bar" type="text" placeholder="Enter Your Postcode">
+                    </span><button id="map-search-button" class="search-btn" onclick="map_search()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid main-bg">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="map-container">
+                        <div id="map" >
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     
-    
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVwoDOw4Edk9I7euFEQP4184xsfPI-0I &callback=initialize"async defer></script>    
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVwoDOw4Edk9I7euFEQP4184xsfPI-0I&libraries=places"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

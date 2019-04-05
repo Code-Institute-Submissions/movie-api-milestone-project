@@ -1,0 +1,28 @@
+.divider {
+    width: 100%;
+    height: 20px;
+    background-color: $gold;
+}
+
+.search-bar-container {
+    text-align: center;
+}
+.map-search-bar {
+    background-color: $gold;
+    width: 189px;
+    color: $content-font-color;
+    font-family: $content-font;
+    border-radius: 10px;
+    border: 2px solid $gun-metal;
+}
+
+.map-container {
+    width: 100%;
+    border: 1px solid $gold;
+    height: 300px;
+}
+#map {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
