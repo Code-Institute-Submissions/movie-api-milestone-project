@@ -2,6 +2,7 @@ var map;
 var service;
 var infowindow;
 
+
 function initialize() {
   var stevenage = new google.maps.LatLng(51.90224,-0.20256);
   
@@ -14,9 +15,11 @@ function initialize() {
         var request = {
           location: stevenage,
           radius: '500',
-          query: 'restaurant',
+          query: 'cinema',
   };
   
+  
+          
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
   
@@ -26,7 +29,13 @@ function initialize() {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
-      createMarker(results[i]);
+      var coords = place.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+      marker(results[i]);
       }
       
     }
