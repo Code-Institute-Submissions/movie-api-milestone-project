@@ -45,14 +45,14 @@ var xhr = new XMLHttpRequest();
         var movie = $( "input" ).val();
           
       $.ajax({
-            url: "https://www.omdbapi.com/?s=" + movie +"?&apikey=858bd7c5",
+            url: "https://www.omdbapi.com/?s=" + movie +"&type=movie&?&apikey=858bd7c5",
             type: "GET",
             success: function(response) {                       
             var result = response["Search"];                    ///puts response into a variable
             var resultContainer = $("<div class='row'><div class='col-sm-12'></div></div>");  ///specifies where results should go
           
             for (var i = 0; i < result.length; i++) {           ///iterate over each result to pick out each piece of data from it
-              movieData = result[i];                            /// adds each seperate result into a variable
+              movieData = result[i];                            /// declaires each seperate result 
               imdbId = movieData.imdbID;                       ///gets the id of each film in the result and stores it as a variable for later use
               movieSection = createMovieSection(movieData);     ///assigns the createMovieSection function to this variable
               resultContainer.append(movieSection);             ///get the result of the movieSection variable and then place it into the correct place on the html page
@@ -65,15 +65,15 @@ var xhr = new XMLHttpRequest();
   }
     
 function createMovieSection(movieData) {                          ///function to create the section for each movie
-  var movieDiv = $("<div class='result-container'></div>");       /// a variable that creates the section where the different bits of movie data will sit
-  movieDiv.append($('<p class="title">Title: ${movieData.Title}</p>')); ///appends the movie title to the section
-  movieDiv.append($('<img class="poster" src="${movieData.Poster}" alt="poster">'));///appends the movie poster
+  var movieDiv = $(`<div class='result-container'></div>`);       /// a variable that creates the section where the different bits of movie data will sit
+  movieDiv.append($(`<p class="title">Title: ${movieData.Title}</p>`)); ///appends the movie title to the section
+  movieDiv.append($(`<img class="poster" src="${movieData.Poster}" alt="poster">`));///appends the movie poster
   return movieDiv;
 }    
   
-function clearPageAndAddNewResults(allMovies) {
+function clearPageAndAddNewResults(resultContainer) {
   $('#movie-container').html("");
-  $('#movie-container').append(allMovies);
+  $('#movie-container').append(resultContainer);
 }
   
   
