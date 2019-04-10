@@ -35,7 +35,7 @@ function initialize() {
             position: latLng,
             map: map
           });
-      marker(results[i]);
+      marker(place[i]);
       }
       
     }

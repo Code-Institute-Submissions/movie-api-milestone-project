@@ -61,13 +61,22 @@ var xhr = new XMLHttpRequest();
             clearPageAndAddNewResults(resultContainer);       ///calls the function to erase the page and add in the results for the new search
     }
       });
-
+ if (!movie) {
+            document.getElementById("body-header").textContent = "Please Enter A Movie Name";
+            return;
+        }
+        else {
+            document.getElementById("body-header").textContent = "Use The Search Bar Above To Look Up A Movie";
+            return;
+        }
   }
     
 function createMovieSection(movieData) {                          ///function to create the section for each movie
   var movieDiv = $(`<div class='result-container'></div>`);       /// a variable that creates the section where the different bits of movie data will sit
   movieDiv.append($(`<p class="title">Title: ${movieData.Title}</p>`)); ///appends the movie title to the section
+  movieDiv.append($(`<p class="release"> Release: ${movieData.Year}</p>`))
   movieDiv.append($(`<img class="poster" src="${movieData.Poster}" alt="poster">`));///appends the movie poster
+  movieDiv.append($(`<div><button class="search-btn" id="getMoreInfoBtn" onclick="getMoreInfo()" value="${movieData.imdbID}">More Info</button></div>`));
   return movieDiv;
 }    
   
@@ -83,6 +92,36 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
   
+ var xhs = new XMLHttpRequest(); 
+function getMoreInfo(){
+  var imdbid = $('#getMoreInfoBtn').val();
   
+  
+  $.ajax ({
+    url: "https://www.omdbapi.com/?i=" + imdbid +"&plot=full&?&apikey=858bd7c5",
+    type: "GET",
+    success: function(response){
+      var moreInfo = response;
+      var newResultContainer = $("<div class='row'><div class='col-sm-12'></div></div>");
+      clearPageAndAddNewResults(newResultContainer);
+      moreInfoSection = createMoreInfoSection(moreInfo);
+      newResultContainer.append(moreInfoSection);
+      console.log(moreInfo);
+    }
+  });
+}
 
+
+function createMoreInfoSection(moreInfo) {                          
+  var movieDiv = $(`<div class='result-container'></div>`);       
+  movieDiv.append($(`<p class="title">Title: ${moreInfo.Title}</p>`)); 
+  movieDiv.append($(`<p class="release"> Release: ${moreInfo.Year}</p>`))
+  movieDiv.append($(`<p class="director">Director: ${moreInfo.Director}</p>`));
+  movieDiv.append($(`<img class="poster" src="${moreInfo.Poster}" alt="poster">`));
+  movieDiv.append($(`<p class="plot">${moreInfo.Plot}</p>`));
+  movieDiv.append($(`<p class="director">Cast: ${moreInfo.Actors}</p>`));
+  movieDiv.append($(`<p class="meta">Metascore: ${moreInfo.Metascore}</p>`));
+ 
   
+  return movieDiv;
+}    
