@@ -93,6 +93,11 @@
   color: #ffbf00;
   font-size: 10px; }
 
+.more-info-btn {
+  background-color: #ffbf00;
+  border-radius: 25px;
+  border: 2px solid #2C3539; }
+
 .divider {
   width: 100%;
   height: 20px;
