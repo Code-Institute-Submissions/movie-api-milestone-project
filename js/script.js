@@ -1,43 +1,5 @@
-/*
-
-///-------------------this searches by film title and puts all elements into the html but only retrives 1 film----------------------
 var xhr = new XMLHttpRequest();
- 
-
-  function movie_search() {
-        var movie = $( "input" ).val();
-         $(".result-container").show();
-            
-  xhr.open("GET", "https://www.omdbapi.com/?t=" + movie +"?&apikey=858bd7c5");
-  xhr.send();
-  
- xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        movie_data = (JSON.parse(this.responseText));
-         console.log(movie_data);
-   
-        document.getElementById("title").textContent = movie_data.Title;
-        document.getElementById("release").textContent = "Release: " + movie_data.Released;
-        document.getElementById("director").textContent = "Director: " + movie_data.Director;
-        document.getElementById("plot").textContent =  movie_data.Plot;
-        document.getElementById("poster").src =  movie_data.Poster;
-        document.getElementById("cast").textContent = "Cast: " + movie_data.Actors;
-        document.getElementById("metascore").textContent = "Metascore: " + movie_data.Metascore;
-    }
-    
-    };
-    if (!movie) {
-            document.getElementById("body-header").textContent = "Please Enter A Movie Name";
-            return;
-        }
-        else {
-            document.getElementById("body-header").textContent = "Use The Search Bar Above To Look Up A Movie";
-            return;
-        }
-  }
-  */
-  
-function movie_search2() {
+function movie_search() {
   var movie = $("input").val();
 
   $.ajax({
@@ -45,12 +7,12 @@ function movie_search2() {
     type: "GET",
     success: function(response) {
       console.log(response);
-      var result = response["Search"]; ///puts response into a variable
+      var result = response["Search"];
       var htmlString = '';
-      
-      for (var i = 0; i < result.length; i++) { ///iterate over each result to pick out each piece of data from it
-        movieData = result[i]; /// declaires each seperate result <-- fine
-        imdbId = movieData.imdbID; ///gets the id of each film in the result and stores it as a variable for later use <-- fine
+
+      for (var i = 0; i < result.length; i++) {
+        movieData = result[i];
+        imdbId = movieData.imdbID;
         htmlString += `
           <div class="row result-container">
             <div class="col-xs-12">
@@ -76,16 +38,52 @@ function movie_search2() {
   }
 }
 
+/*--------------------------function for doing the second api call to get more information-----*/
+
+var xhs = new XMLHttpRequest();
+
+function getMoreInfo(imdbid) {
 
 
 
 
+  $.ajax({
+    url: "https://www.omdbapi.com/?i=" + imdbid + "&plot=full&?&apikey=858bd7c5",
+    type: "GET",
+    success: function(response) {
+      var moreInfo = response;
+      var newResultContainer = $("<div class='row'><div class='col-sm-12'></div></div>");
+      clearPageAndAddNewResults(newResultContainer);
+      moreInfoSection = createMoreInfoSection(moreInfo);
+      newResultContainer.append(moreInfoSection);
+    }
+  });
+}
 
 
-  
+function createMoreInfoSection(moreInfo) {
+  var movieDiv = $(`<div class='result-container'></div>`);
+  movieDiv.append($(`<p class="title">Title: ${moreInfo.Title}</p>`));
+  movieDiv.append($(`<p class="release"> Release: ${moreInfo.Year}</p>`))
+  movieDiv.append($(`<p class="director">Director: ${moreInfo.Director}</p>`));
+  movieDiv.append($(`<img class="poster" src="${moreInfo.Poster}" alt="poster">`));
+  movieDiv.append($(`<p class="plot">${moreInfo.Plot}</p>`));
+  movieDiv.append($(`<p class="director">Cast: ${moreInfo.Actors}</p>`));
+  movieDiv.append($(`<p class="meta">Metascore: ${moreInfo.Metascore}</p>`));
 
 
+  return movieDiv;
+}
 
+
+ // to shorten this: 
+    
+    // $.get("https://www.omdbapi.com/?i=" + imdbid + "&plot=full&?&apikey=858bd7c5").done(function(response) {
+    //   blah blah blah
+    // })
+    // $.post('someurl.com', {thing1: 'val1', thing2: 'val2'}).done(function(response){
+    //   blah blah blah
+    // })
 
 
   
@@ -93,7 +91,7 @@ function movie_search2() {
 
 
 
-  function movie_search() {
+  function movie_search2() {
     var movie = $("input").val();
 
     $.ajax({
@@ -144,33 +142,43 @@ function movie_search2() {
     }
   });
 
-  var xhs = new XMLHttpRequest();
-function getMoreInfo(imdbid) {
+
+
+/*
+
+///-------------------this searches by film title and puts all elements into the html but only retrives 1 film----------------------
+var xhr = new XMLHttpRequest();
+ 
+
+  function movie_search() {
+        var movie = $( "input" ).val();
+         $(".result-container").show();
+            
+  xhr.open("GET", "https://www.omdbapi.com/?t=" + movie +"?&apikey=858bd7c5");
+  xhr.send();
   
-    $.ajax({
-      url: "https://www.omdbapi.com/?i=" + imdbid + "&plot=full&?&apikey=858bd7c5",
-      type: "GET",
-      success: function(response) {
-        var moreInfo = response;
-        var newResultContainer = $("<div class='row'><div class='col-sm-12'></div></div>");
-        clearPageAndAddNewResults(newResultContainer);
-        moreInfoSection = createMoreInfoSection(moreInfo);
-        newResultContainer.append(moreInfoSection);
-      }
-    });
+ xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        movie_data = (JSON.parse(this.responseText));
+         console.log(movie_data);
+   
+        document.getElementById("title").textContent = movie_data.Title;
+        document.getElementById("release").textContent = "Release: " + movie_data.Released;
+        document.getElementById("director").textContent = "Director: " + movie_data.Director;
+        document.getElementById("plot").textContent =  movie_data.Plot;
+        document.getElementById("poster").src =  movie_data.Poster;
+        document.getElementById("cast").textContent = "Cast: " + movie_data.Actors;
+        document.getElementById("metascore").textContent = "Metascore: " + movie_data.Metascore;
+    }
+    
+    };
+    if (!movie) {
+            document.getElementById("body-header").textContent = "Please Enter A Movie Name";
+            return;
+        }
+        else {
+            document.getElementById("body-header").textContent = "Use The Search Bar Above To Look Up A Movie";
+            return;
+        }
   }
-
-
-  function createMoreInfoSection(moreInfo) {
-    var movieDiv = $(`<div class='result-container'></div>`);
-    movieDiv.append($(`<p class="title">Title: ${moreInfo.Title}</p>`));
-    movieDiv.append($(`<p class="release"> Release: ${moreInfo.Year}</p>`))
-    movieDiv.append($(`<p class="director">Director: ${moreInfo.Director}</p>`));
-    movieDiv.append($(`<img class="poster" src="${moreInfo.Poster}" alt="poster">`));
-    movieDiv.append($(`<p class="plot">${moreInfo.Plot}</p>`));
-    movieDiv.append($(`<p class="director">Cast: ${moreInfo.Actors}</p>`));
-    movieDiv.append($(`<p class="meta">Metascore: ${moreInfo.Metascore}</p>`));
-
-
-    return movieDiv;
-  }
+  */
