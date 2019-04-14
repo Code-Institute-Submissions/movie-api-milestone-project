@@ -1,4 +1,5 @@
 var xhr = new XMLHttpRequest();
+
 function movie_search() {
   var movie = $("input").val();
 
@@ -7,13 +8,18 @@ function movie_search() {
     type: "GET",
     success: function(response) {
       console.log(response);
-      var result = response["Search"];
-      var htmlString = '';
+      if (response.Response == "False") {
+        $('#body-header').innerHtml = "Film Not Found, Please Try Again";
+      }
 
-      for (var i = 0; i < result.length; i++) {
-        movieData = result[i];
-        imdbId = movieData.imdbID;
-        htmlString += `
+      else {
+        var result = response["Search"];
+        var htmlString = '';
+
+        for (var i = 0; i < result.length; i++) {
+          movieData = result[i];
+          imdbId = movieData.imdbID;
+          htmlString += `
           <div class="row result-container">
             <div class="col-xs-12">
               <p class="title">Title: ${movieData.Title}</p>
@@ -24,8 +30,9 @@ function movie_search() {
               </div>
             </div>
           </div>`;
+        }
+          $('#movie-container').html(htmlString);
       }
-      $('#movie-container').html(htmlString);
     }
   });
   if (!movie) {
@@ -76,71 +83,75 @@ function createMoreInfoSection(moreInfo) {
 }
 
 
- // to shorten this: 
-    
-    // $.get("https://www.omdbapi.com/?i=" + imdbid + "&plot=full&?&apikey=858bd7c5").done(function(response) {
-    //   blah blah blah
-    // })
-    // $.post('someurl.com', {thing1: 'val1', thing2: 'val2'}).done(function(response){
-    //   blah blah blah
-    // })
+function clearPageAndAddNewResults(resultContainer) {
+  $('#movie-container').html("");
+}
+
+// to shorten this: 
+
+// $.get("https://www.omdbapi.com/?i=" + imdbid + "&plot=full&?&apikey=858bd7c5").done(function(response) {
+//   blah blah blah
+// })
+// $.post('someurl.com', {thing1: 'val1', thing2: 'val2'}).done(function(response){
+//   blah blah blah
+// })
 
 
-  
-  var xhr = new XMLHttpRequest();
+
+var xhr = new XMLHttpRequest();
 
 
 
-  function movie_search2() {
-    var movie = $("input").val();
+function movie_search2() {
+  var movie = $("input").val();
 
-    $.ajax({
-      url: "https://www.omdbapi.com/?s=" + movie + "&type=movie&?&apikey=858bd7c5",
-      type: "GET",
-      success: function(response) {
-        var result = response["Search"]; ///puts response into a variable
-        var resultContainer = $("<div class='row'><div class='col-sm-12'></div></div>"); ///specifies where results should go
+  $.ajax({
+    url: "https://www.omdbapi.com/?s=" + movie + "&type=movie&?&apikey=858bd7c5",
+    type: "GET",
+    success: function(response) {
+      var result = response["Search"]; ///puts response into a variable
+      var resultContainer = $("<div class='row'><div class='col-sm-12'></div></div>"); ///specifies where results should go
 
-        for (var i = 0; i < result.length; i++) { ///iterate over each result to pick out each piece of data from it
-          movieData = result[i]; /// declaires each seperate result 
-          imdbId = movieData.imdbID; ///gets the id of each film in the result and stores it as a variable for later use
-          movieSection = createMovieSection(movieData); ///assigns the createMovieSection function to this variable
-          resultContainer.append(movieSection); ///get the result of the movieSection variable and then place it into the correct place on the html page
-          console.log(movieData);
-        }
-        clearPageAndAddNewResults(resultContainer); ///calls the function to erase the page and add in the results for the new search
+      for (var i = 0; i < result.length; i++) { ///iterate over each result to pick out each piece of data from it
+        movieData = result[i]; /// declaires each seperate result 
+        imdbId = movieData.imdbID; ///gets the id of each film in the result and stores it as a variable for later use
+        movieSection = createMovieSection(movieData); ///assigns the createMovieSection function to this variable
+        resultContainer.append(movieSection); ///get the result of the movieSection variable and then place it into the correct place on the html page
+        console.log(movieData);
       }
-    });
-    if (!movie) {
-      document.getElementById("body-header").textContent = "Please Enter A Movie Name";
-      return;
-    }
-    else {
-      document.getElementById("body-header").textContent = "Use The Search Bar Above To Look Up A Movie";
-      return;
-    }
-  }
-
-  function createMovieSection(movieData) { ///function to create the section for each movie
-    var movieDiv = $(`<div class='result-container'></div>`); /// a variable that creates the section where the different bits of movie data will sit
-    movieDiv.append($(`<p class="title">Title: ${movieData.Title}</p>`)); ///appends the movie title to the section
-    movieDiv.append($(`<p class="release"> Release: ${movieData.Year}</p>`))
-    movieDiv.append($(`<img class="poster" src="${movieData.Poster}" alt="poster">`)); ///appends the movie poster
-    movieDiv.append($(`<div><button class="more-info-btn" onclick ="getMoreInfo('${movieData.imdbID}')">More Info</button></div>`));
-    return movieDiv;
-  }
-
-  function clearPageAndAddNewResults(resultContainer) {
-    $('#movie-container').html("");
-    $('#movie-container').append(resultContainer);
-  }
-
-
-  xhr.addEventListener("readystatechange", function() {
-    if (this.readyState === this.DONE) {
-      console.log(this.responseText);
+      clearPageAndAddNewResults(resultContainer); ///calls the function to erase the page and add in the results for the new search
     }
   });
+  if (!movie) {
+    document.getElementById("body-header").textContent = "Please Enter A Movie Name";
+    return;
+  }
+  else {
+    document.getElementById("body-header").textContent = "Use The Search Bar Above To Look Up A Movie";
+    return;
+  }
+}
+
+function createMovieSection(movieData) { ///function to create the section for each movie
+  var movieDiv = $(`<div class='result-container'></div>`); /// a variable that creates the section where the different bits of movie data will sit
+  movieDiv.append($(`<p class="title">Title: ${movieData.Title}</p>`)); ///appends the movie title to the section
+  movieDiv.append($(`<p class="release"> Release: ${movieData.Year}</p>`))
+  movieDiv.append($(`<img class="poster" src="${movieData.Poster}" alt="poster">`)); ///appends the movie poster
+  movieDiv.append($(`<div><button class="more-info-btn" onclick ="getMoreInfo('${movieData.imdbID}')">More Info</button></div>`));
+  return movieDiv;
+}
+
+function clearPageAndAddNewResults(resultContainer) {
+  $('#movie-container').html("");
+  $('#movie-container').append(resultContainer);
+}
+
+
+xhr.addEventListener("readystatechange", function() {
+  if (this.readyState === this.DONE) {
+    console.log(this.responseText);
+  }
+});
 
 
 

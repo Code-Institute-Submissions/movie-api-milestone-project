@@ -2,7 +2,7 @@
     font: {
         family: $head-font;
         weight: 700;
-        size: 18px;
+        size: 22px;
     }
     color: $head-font-color;
 }
@@ -11,7 +11,7 @@
     font: {
         family: $content-font;
         weight: 400;
-        size: 16px;
+        size: 20px;
     }
     color: $content-font-color;
 }
@@ -22,5 +22,14 @@
         weight: 700;
         size: 22px;
     }
-    color: $content-font-color;
+    color: $gun-metal-font;
+}
+
+@mixin fact-font {
+    font: {
+        family: $content-font;
+        weight: 400;
+        size: 16px;
+    }
+    color: $fact-font-color;
 }

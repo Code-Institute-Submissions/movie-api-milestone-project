@@ -17,13 +17,15 @@
   top: 10px; }
 
 .search-bar {
-  float: right;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
   position: relative;
   top: 15px; }
 
 .search-bar input {
   background-color: #ffbf00;
-  width: 100px;
+  width: 300px;
   color: #2C3539;
   font-family: "Open Sans", sans-serif;
   border-radius: 10px;
@@ -34,9 +36,6 @@
   border-radius: 25px;
   border: 2px solid #2C3539; }
 
-@media only screen and (max-width: 350px) {
-  .page-header {
-    font-size: 12px; } }
 .main-bg {
   height: 100%;
   width: 100%;
@@ -49,7 +48,7 @@
 .body-header {
   font-family: "Dosis", sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   color: #ffbf00;
   text-align: center;
   padding-top: 80px; }
@@ -64,34 +63,36 @@
 .title {
   font-family: "Dosis", sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
   color: #ffbf00; }
 
 .release {
   font-family: "Open Sans", sans-serif;
-  color: #2C3539;
-  font-weight: 400i;
-  font-size: 10px; }
+  font-weight: 400;
+  font-size: 16px;
+  color: #696969; }
 
 .director {
   font-family: "Open Sans", sans-serif;
-  color: #2C3539;
-  font-size: 10px; }
+  font-weight: 400;
+  font-size: 16px;
+  color: #696969; }
 
 .plot {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  color: #2C3539; }
+  font-size: 20px;
+  color: #a8a8a8; }
 
 .poster {
-  height: 203px;
+  height: 223px;
   width: 157px; }
 
 .meta {
   font-family: "Open Sans", sans-serif;
-  color: #ffbf00;
-  font-size: 10px; }
+  font-weight: 400;
+  font-size: 16px;
+  color: #696969; }
 
 .more-info-btn {
   background-color: #ffbf00;
@@ -108,7 +109,7 @@
 
 .map-search-bar {
   background-color: #ffbf00;
-  width: 189px;
+  width: 300px;
   color: #2C3539;
   font-family: "Open Sans", sans-serif;
   border-radius: 10px;
@@ -128,24 +129,9 @@
 @media only screen and (min-width: 500px) {
   .map-container {
     height: 900px; } }
-#overlay {
-  position: fixed;
-  /* Sit on top of the page content */
-  display: none;
-  /* Hidden by default */
-  width: 100%;
-  /* Full width (cover the whole page) */
-  height: 100%;
-  /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Black background with opacity */
-  z-index: 2;
-  /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer;
-  /* Add a pointer on hover */ }
+.map-search-btn {
+  background-color: #ffbf00;
+  border-radius: 25px;
+  border: 2px solid #2C3539; }
 
 /*# sourceMappingURL=main.css.map */

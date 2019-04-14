@@ -17,15 +17,17 @@
 }
 
 .search-bar {
-    float: right;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
     position: relative;
     top: 15px;
 }
 
 .search-bar input {
     background-color: $gold;
-    width: 100px;
-    color: $content-font-color;
+    width: 300px;
+    color: $gun-metal-font;
     font-family: $content-font;
     border-radius: 10px;
     border: 2px solid $gun-metal;
@@ -35,11 +37,5 @@
     background-color: $gold;
     border-radius: 25px;
     border: 2px solid $gun-metal;
-}
-
-@media only screen and (max-width: 350px) {
-    .page-header {
-        font-size: 12px;
-    }
 }
 

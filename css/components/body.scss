@@ -27,16 +27,11 @@
 }
 
 .release {
-    font-family: $content-font;
-    color: $content-font-color;
-    font-weight: 400i;
-    font-size: 10px;
+   @include fact-font;
 }
 
 .director {
-    font-family: $content-font;
-    color: $content-font-color;
-    font-size: 10px;
+    @include fact-font;
 }
 
 .plot {
@@ -44,14 +39,12 @@
 }
 
 .poster {
-    height: 203px;
+    height: 223px;
     width: 157px;
 }
 
 .meta {
-    font-family: $content-font;
-    color: $head-font-color;
-    font-size: 10px;
+    @include fact-font;
 }
 
 .more-info-btn {

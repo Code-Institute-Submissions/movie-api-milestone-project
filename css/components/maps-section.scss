@@ -9,8 +9,8 @@
 }
 .map-search-bar {
     background-color: $gold;
-    width: 189px;
-    color: $content-font-color;
+    width: 300px;
+    color: $gun-metal-font;
     font-family: $content-font;
     border-radius: 10px;
     border: 2px solid $gun-metal;
@@ -32,4 +32,10 @@
     .map-container {
         height: 900px;
     }
+}
+
+.map-search-btn {
+    background-color: $gold;
+    border-radius: 25px;
+    border: 2px solid $gun-metal;
 }

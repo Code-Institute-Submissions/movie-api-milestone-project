@@ -18,15 +18,18 @@
         <div class="container-fluid">
             <div class="row top-bar">
                 <div class="col-sm-12">
-                    <span><img class="main-logo" src="images/movieboard.jpg"></span>
+                    <span><img class="main-logo" src="images/movieboard.jpg" onclick="clearPageAndAddNewResults()"></span>
                     <span class="page-header">The Next Watch</span>
-                    <span class="search-bar"><input id="search-bar" type="text" placeholder="Search"><button id="search-button" class="search-btn" onclick="movie_search()"><i class="fas fa-search"></i></button></span>
+                    
                 </div>
             </div>
         </div>
     </header>
     <main>
         <div class="container-fluid main-bg">
+            <div class="row">
+                <span class="search-bar"><input id="search-bar" type="text" placeholder="Search"><button id="search-button" class="search-btn" onclick="movie_search()"><i class="fas fa-search"></i></button></span>
+            </div>
             <div class="row">
                 <div class="col-sm-12 body-header-container">
                     <p id="body-header" class="body-header">Use The Search Bar Above To Look Up A Movie</p>
@@ -50,8 +53,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 search-bar-container">
-                    <span><input class="map-search-bar" id="search-bar" type="text" placeholder="Enter Your Postcode">
-                    </span><button id="map-search-button" class="search-btn" onclick="map_search()"><i class="fas fa-search"></i></button>
+                    <span><input class="map-search-bar" id="map-search-bar" type="text" placeholder="Enter Your Postcode">
+                    </span><button id="map-search-button" class="map-search-btn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
         </div>
@@ -71,8 +74,7 @@
         </footer>
     </main>
     
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVwoDOw4Edk9I7euFEQP4184xsfPI-0I &callback=initialize"async defer></script>    
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVwoDOw4Edk9I7euFEQP4184xsfPI-0I&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGVwoDOw4Edk9I7euFEQP4184xsfPI-0I&libraries=places&callback=initMap"async defer></script>    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
