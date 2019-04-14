@@ -25,7 +25,7 @@
 
 .search-bar input {
   background-color: #ffbf00;
-  width: 300px;
+  width: 200px;
   color: #2C3539;
   font-family: "Open Sans", sans-serif;
   border-radius: 10px;
@@ -109,7 +109,7 @@
 
 .map-search-bar {
   background-color: #ffbf00;
-  width: 300px;
+  width: 200px;
   color: #2C3539;
   font-family: "Open Sans", sans-serif;
   border-radius: 10px;
