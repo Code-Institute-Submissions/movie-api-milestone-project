@@ -63,12 +63,12 @@ button is clicked it will then show the locations of the cinemas nearby.
 #### Features Left to Implement  
 
 Features that I think could be added in the future are:  
-+One  
-    -The ability to add films too a watch list so users can use this to  
++ One  
+    - The ability to add films too a watch list so users can use this to  
     keep a record of films they like to see and view the information on   
     each film.  
-+Two  
-    -The ability to use the map to get directions to the chosen cinema  
-+Three  
-    -Each result on the map would link to the website of the cinema so  
++ Two  
+    - The ability to use the map to get directions to the chosen cinema  
++ Three  
+    - Each result on the map would link to the website of the cinema so  
     users could look up viewing times and availability of films.   
