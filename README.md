@@ -71,4 +71,55 @@ Features that I think could be added in the future are:
     - The ability to use the map to get directions to the chosen cinema  
 + Three  
     - Each result on the map would link to the website of the cinema so  
-    users could look up viewing times and availability of films.   
+    users could look up viewing times and availability of films.
+
+## Technologies Used  
+
++ [Jquery](https://jquery.com/)
+    - Used to simplify making calls to the API server and DOM minipulation.  
++ [Bootstrap](https://getbootstrap.com/)
+    - Used to simplify making the app responsive and other small bits of css
+    such as floats and border rounding.  
++ [Google Fonts](https://fonts.google.com/)
+    - Used to find fonts to use for the text on the webpage.  
++ [Javascript](https://www.javascript.com/)
+    - Used to make calls to the api server and Dom minipulation.  
++ [HTML](https://html.com/)
+    - Used to create content on the webpage.
++ [SASS/SCSS](https://sass-lang.com/)
+    - Used to add design to the webpage and make css more readable
+    and avoid rewriting code useing mixins and variables.
++ [Font Awesome](https://fontawesome.com/)
+    - Used to get the search button icon.  
++ [OMDB API](www.omdbapi.com/)
+    - The API used to get the film information when search for.  
++ [Google Maps/Places API](https://developers.google.com/maps/documentation/)
+    - The API used to get location of cinemas.  
+
+## Testing  
+
+These are the details of the steps i went through while testing my code:  
+
++ Movie Search
+    - When a search is performed and the search bar is empty an error  
+    message appears on screen.    
+    - Searched for different movie titles and made sure all returned  
+    results are relateded to the search term.  
+    - Searched fior movies with slight spelling mistakes, all returned  
+    results still related to search term.  
+    - Search for a made up movie or with major spelling mistakes,  
+    tried to add an error message on screen but even tho I have  
+    had alot of help to try get this to work, I haven't managed  
+    to impliment this, This may be an API issue.
++ More info button search  
+    - When the more info button is clicked I checked to see if  
+    the returned result was the information reltaed to the film.  
++ Cinema search  
+    - Done searches by town name and then matched the returned  
+    results to a google maps search on the google website.
+    - When trying to search by postcode or a phone number I added  
+    an error message to the screen.
+    - If a search returns no results i added an error message to  
+    the screen to prompt the user to try another town.  
+    - If the search term in not a correct town name an error message  
+    appears on screen to inform the user of this.
