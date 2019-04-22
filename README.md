@@ -1,4 +1,4 @@
-# movie-api-milstone-project
+# movie-api-milestone-project
 
 The aim of this web application is too allow users to search for  
 Movie's they have heard about or a movie that they would like to view  
@@ -113,13 +113,38 @@ These are the details of the steps i went through while testing my code:
     to impliment this, This may be an API issue.
 + More info button search  
     - When the more info button is clicked I checked to see if  
-    the returned result was the information reltaed to the film.  
+    the returned result was the information related to the film.  
 + Cinema search  
     - Done searches by town name and then matched the returned  
     results to a google maps search on the google website.
-    - When trying to search by postcode or a phone number I added  
-    an error message to the screen.
-    - If a search returns no results i added an error message to  
+    - I tryied to search by postcode or a phone number and I added  
+    an error message to the screen for the resulting error.
+    - If a search returns no results I added an error message to  
     the screen to prompt the user to try another town.  
-    - If the search term in not a correct town name an error message  
-    appears on screen to inform the user of this.
+    - I mispelt a place name and if the search term in not a correct  
+    town name an error message  
+    appears on screen to inform the user of this.  
+
+## Deployment  
+
+To deploy this app I used GitHub pages. I used this because I had  
+already used github for version control. The difference between  
+the development version and the deployment version is that  
+the deployment version has cleaner code and has useless code  
+removed. 
+
+To run the app, Run the index.html file.  
+
+## Credits 
+
+#### Content  
+
++ OMDB API - The API used to get all the movie data.  
++ Google Maps/Places API - Used for the map section.  
+
+#### Media  
+
++ Page Logo - Taken from [https://www.agefotostock.com](https://www.agefotostock.com) and edited to be the right colour.  
+
+ 
+
