@@ -25,7 +25,7 @@ $('.map-search-btn').click(function() {
    var placeSearch = location.toString();
     var request = {
     query: placeSearch,
-    fields: ['name', 'geometry'],
+    fields: ['name', 'formatted_address', 'geometry', 'opening_hours'],
   };
   
   
@@ -40,7 +40,8 @@ $('.map-search-btn').click(function() {
       }
       map.setCenter(place[0].geometry.location);
     }
-    findCinema(locationSearch);
+    findCinema(place[0].geometry.location);
+    console.log(place[0].geometry.location, "debug");
   });
   
 }); 
@@ -59,6 +60,7 @@ $('.map-search-btn').click(function() {
   service.nearbySearch(newRequest, callback);
 
   function callback(results, status) {
+    
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
@@ -70,11 +72,22 @@ $('.map-search-btn').click(function() {
     /*--------code to creATE THE MARKERS---------*/
    function createMarker(place) {
   var placeLoc = place.geometry.location;
+  var contentString = `<p>${place.name}</p>
+                        <p.>${place.formatted_address}</p>`
+  
+  var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        
   var marker = new google.maps.Marker({
     map: map,
     title: place.name,
     position: place.geometry.location
   });
+   marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+    
    }
 
 
